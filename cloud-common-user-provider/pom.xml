@@ -1,0 +1,35 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.cn.cloud</groupId>
+    <artifactId>cloud-common-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  
+  <artifactId>cloud-common-user-provider</artifactId>
+  <version>${cloud-common-user-provider.version}</version>
+  
+    <dependencies>
+  	
+    <dependency>
+        <groupId>com.cn.cloud</groupId>
+    	<artifactId>cloud-common-core</artifactId>
+    	<version>${cloud-common-core.version}</version>
+    </dependency>
+    
+    <dependency>
+        <groupId>com.cn.cloud</groupId>
+    	<artifactId>cloud-common-config</artifactId>
+    	<version>${cloud-common-config.version}</version>
+    </dependency>
+    
+    <dependency>
+        <groupId>com.cn.cloud</groupId>
+    	 <artifactId>cloud-common-user-api</artifactId>
+  		<version>${cloud-common-user-api.version}</version>
+    </dependency>
+    
+  </dependencies>
+  
+  
+</project>

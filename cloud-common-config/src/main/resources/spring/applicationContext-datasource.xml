@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+						http://www.springframework.org/schema/jdbc  http://www.springframework.org/schema/jdbc/spring-jdbc-4.1.xsd
+						http://www.springframework.org/schema/context  
+          				http://www.springframework.org/schema/context/spring-context-3.2.xsd"
+						>
+						
+	<!-- mysql master db -->	
+	<bean id="masterDataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${cloud.master.jdbc.driver}"/>
+        <property name="url" value="${cloud.master.jdbc.url}"/>
+        <property name="username" value="${cloud.master.jdbc.username}"/>
+        <property name="password" value="${cloud.master.jdbc.password}"/>
+    </bean>	
+    
+    <!-- mysql slave db -->	
+     <bean id="salveDataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${cloud.slave.jdbc.driver}"/>
+        <property name="url" value="${cloud.slave.jdbc.url}"/>
+        <property name="username" value="${cloud.slave.jdbc.username}"/>
+        <property name="password" value="${cloud.slave.jdbc.password}"/>
+    </bean>	
+    
+    <!-- mycat db -->	
+     <bean id="mycatDataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${cloud.mycat.jdbc.driver}"/>
+        <property name="url" value="${cloud.mycat.jdbc.url}"/>
+        <property name="username" value="${cloud.mycat.jdbc.username}"/>
+        <property name="password" value="${cloud.mycat.jdbc.password}"/>
+    </bean>	
+    
+    <!-- multi db -->	
+    <bean id="localDataSource" class="com.cn.cloud.core.multiDataSource.MultipleDataSource" primary="true">  
+        <property name="defaultTargetDataSource" ref="masterDataSource"/> <!--默认主库-->  
+        <property name="targetDataSources">  
+            <map>  
+                <entry key="master" value-ref="masterDataSource"/>        <!--辅助aop完成自动数据库切换-->  
+                <entry key="slave" value-ref="salveDataSource"/>  
+                <entry key="mycat" value-ref="mycatDataSource"/>  
+            </map>  
+        </property>  
+    </bean> 
+    
+    					
+</beans>						

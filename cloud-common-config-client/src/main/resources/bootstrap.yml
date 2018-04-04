@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: config-service
+  profiles:
+    active: default
+  cloud:
+    config:
+      uri: http://localhost:1201
+      enabled: true
+
+server:
+  port: 2201

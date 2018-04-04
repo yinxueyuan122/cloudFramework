@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cn.cloud.user.provider.dao.UserInfoDao">
+
+    <!-- emp 按KEY查询. -->
+    <select id="findByPk" parameterType="map" resultType="UserInfoModel">
+    </select>
+    
+    
+    <!-- emp按条件查询. -->
+    <select id="select" parameterType="UserInfoSearchModel" resultType="UserInfoModel">
+        SELECT *
+        FROM USER T1
+        
+		
+    </select>
+    
+    <!-- emp按条件查询. -->
+    <select id="selectUserInfoModel" parameterType="UserInfoSearchModel" resultType="UserInfoModel">
+          SELECT *
+        FROM user T1
+        
+		
+    </select>
+    
+    <!-- emp按条件查询TOTAL. -->
+    <select id="selectCount" parameterType="UserInfoSearchModel" resultType="long">
+		
+    </select>
+    
+    
+    
+    <!-- emp删除-->
+    <delete id="remove" parameterType="UserInfoModel" >
+
+    </delete>
+    
+    <!-- emp更新-->
+    <update id="update" parameterType="UserInfoModel" >
+    </update>
+    
+    <!-- emp插入-->
+    <insert id="create" parameterType="UserInfoModel" >
+    </insert>
+
+</mapper>

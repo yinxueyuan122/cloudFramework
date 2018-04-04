@@ -1,0 +1,12 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1001/eureka/
+spring:
+  application:
+    name: cloud-api
+server:
+  port: 9000
+logging:
+  level: 
+    root:DEBUG
