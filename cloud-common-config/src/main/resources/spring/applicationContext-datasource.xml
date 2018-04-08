@@ -35,7 +35,7 @@
     
     <!-- multi db -->	
     <bean id="localDataSource" class="com.cn.cloud.core.multiDataSource.MultipleDataSource" primary="true">  
-        <property name="defaultTargetDataSource" ref="masterDataSource"/> <!--默认主库-->  
+        <property name="defaultTargetDataSource" ref="mycatDataSource"/> <!--默认主库-->  
         <property name="targetDataSources">  
             <map>  
                 <entry key="master" value-ref="masterDataSource"/>        <!--辅助aop完成自动数据库切换-->  

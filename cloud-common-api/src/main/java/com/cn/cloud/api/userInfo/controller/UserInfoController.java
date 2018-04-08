@@ -30,4 +30,16 @@ public class UserInfoController {
 		return userInfoApi.selectUserInfoModel(searchModel);
 	
 	 }
+	
+	/**
+	 * user 查询列表
+	 * @return
+	 */
+	@PostMapping(value="/user/insertUserInfo.do")
+	public String insertUserInfo(@RequestBody UserInfoModel userInfoModel)
+	{		
+		userInfoApi.insertUserInfo(userInfoModel);  
+		return "succese";
+	
+	 }
 }

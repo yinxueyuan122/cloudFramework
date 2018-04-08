@@ -26,11 +26,18 @@ import com.cn.cloud.user.api.model.UserInfoSearchModel;
 public interface UserInfoApi{
 	
 	/**
-	 * 从mycat数据库查询数据
+	 * 查询用户信息
 	 * @return UserInfoModel
 	 */
 	@PostMapping(value="/user/selectUserInfoModel.do")
 	public List<UserInfoModel> selectUserInfoModel(UserInfoSearchModel searchModel);
+	
+	/**
+	 * 插入用户信息
+	 * @return UserInfoModel
+	 */
+	@PostMapping(value="/user/insertUserInfo.do")
+	public String insertUserInfo(UserInfoModel userInfoModel);
 	
 
 }

@@ -1,7 +1,6 @@
 package com.cn.cloud.user.provider.api;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,30 +31,20 @@ public class UserInfoFacade {
 	public List<UserInfoModel> selectUserInfoModel(@RequestBody UserInfoSearchModel searchModel)
 	{		
                 
-			List<UserInfoModel> list = new ArrayList<UserInfoModel>();
-			UserInfoModel model1 = new UserInfoModel();
-			model1.setId(1);
-			model1.setAge(10);
-			
-			UserInfoModel model2 = new UserInfoModel();
-			model2.setId(1);
-			model2.setAge(10);
-			
-			UserInfoModel model3 = new UserInfoModel();
-			model3.setId(1);
-			model3.setAge(10);
-			
-			UserInfoModel model4 = new UserInfoModel();
-			model4.setId(1);
-			model4.setAge(10);
-			
-			list.add(model1);
-			list.add(model2);
-			list.add(model3);
-			list.add(model4);
 		return userInfoService.selectUserInfoModel(searchModel);
 		
-		//return list;
+	 }
+	
+	
+	/**
+	 * user 插入
+	 * @return
+	 */
+	@PostMapping(value="/user/insertUserInfo.do")
+	public String insertUserInfo(@RequestBody UserInfoModel userInfoModel)
+	{		
+		userInfoService.create(userInfoModel);  
+		return "succese";
 	
 	 }
 	
