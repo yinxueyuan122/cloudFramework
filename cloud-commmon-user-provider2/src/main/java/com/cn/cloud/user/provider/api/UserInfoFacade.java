@@ -2,7 +2,9 @@ package com.cn.cloud.user.provider.api;
 
 
 import java.util.List;
+import java.util.Map;
 
+import org.apache.commons.collections4.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -41,10 +43,13 @@ public class UserInfoFacade {
 	 * @return
 	 */
 	@PostMapping(value="/user/insertUserInfo.do")
-	public String insertUserInfo(@RequestBody UserInfoModel userInfoModel)
-	{		
+	public Map<String,String> insertUserInfo(@RequestBody UserInfoModel userInfoModel)
+	{  
+		Map<String,String> map = new HashedMap<String,String>();
 		userInfoService.create(userInfoModel);  
-		return "succese";
+		map.put("result", "succese");
+		
+		return map;
 	
 	 }
 	
@@ -52,4 +57,19 @@ public class UserInfoFacade {
     public String add() {
         return "sc";
     }
+	
+	/**
+	 * user 更新
+	 * @return
+	 */
+	@PostMapping(value="/user/updateUserInfo.do")
+	public Map<String,String> updateUserInfo(@RequestBody UserInfoModel userInfoModel)
+	{		
+		Map<String,String> map = new HashedMap<String,String>();
+		userInfoService.update(userInfoModel);  
+		map.put("result", "succese");
+		
+		return map;
+		
+	}
 }

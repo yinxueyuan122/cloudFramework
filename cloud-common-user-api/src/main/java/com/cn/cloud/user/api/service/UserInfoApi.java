@@ -1,6 +1,7 @@
 package com.cn.cloud.user.api.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,7 +38,21 @@ public interface UserInfoApi{
 	 * @return UserInfoModel
 	 */
 	@PostMapping(value="/user/insertUserInfo.do")
-	public String insertUserInfo(UserInfoModel userInfoModel);
+	public Map<String,String> insertUserInfo(UserInfoModel userInfoModel);
+	
+	/**
+	 * 更新用户信息
+	 * @return UserInfoModel
+	 */
+	@PostMapping(value="/user/updateUserInfo.do")
+	public Map<String,String> updateUserInfo(UserInfoModel userInfoModel);
+	
+	/**
+	 * 查询用户
+	 * @return UserInfoModel
+	 */
+	@PostMapping(value="/user/selectUserInfoByKey.do")
+	public UserInfoModel selectUserInfoByKey(UserInfoSearchModel searchModel);
 	
 
 }

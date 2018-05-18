@@ -1,5 +1,7 @@
 package com.cn.cloud.redis.core;
 
+import java.util.Set;
+
 import com.cn.cloud.redis.util.SerializeUtil;
 
 import redis.clients.jedis.Jedis;
@@ -25,6 +27,8 @@ public class RedisApi<K,V> {
 	private RedisFactory redisFactory;
 	
 	private RedisStringManager<K,V> redisStringManager;
+	
+	private RedisZSetManager<K,V> redisZSetManager;
 
 	public RedisFactory getRedisFactory() {
 		return redisFactory;
@@ -46,8 +50,24 @@ public class RedisApi<K,V> {
 		return getRedisStringManager().get(key);
 	}
 	
-	public void update(K key,V value){
+	public void updateString(K key,V value){
 		getRedisStringManager().update(key, value);
+	}
+	
+	public Long zadd(K key,V value){
+		return getRedisZSetManager().zadd(key, value);
+	}
+	
+	public void zaddByScore(K key,double score,V value){
+		getRedisZSetManager().zaddByScore(key,score, value);
+	}
+	
+	public Set<V>  zrange(K key,long start, long end){
+		return getRedisZSetManager().zrange(key, start,end);
+	}
+
+	public Set<V>  zrangeByScore(K key,long start, long end){
+		return getRedisZSetManager().zrangeByScore(key, start,end);
 	}
 	
 	private RedisStringManager<K,V>  getRedisStringManager(){
@@ -55,6 +75,13 @@ public class RedisApi<K,V> {
 			redisStringManager = new CommonRedisStringManager<K, V>(this);
 		}
 		return redisStringManager;
+	}
+	
+	private RedisZSetManager<K,V>  getRedisZSetManager(){
+		if (redisZSetManager == null) {
+			redisZSetManager = new CommonRedisZSetManager<K, V>(this);
+		}
+		return redisZSetManager;
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -65,7 +92,6 @@ public class RedisApi<K,V> {
 		for (K key : keys) {
 			rawKeys[i++] = SerializeUtil.writeToByteArray(key);
 		}
-
 		return getJedis().del(rawKeys);
 	}
 

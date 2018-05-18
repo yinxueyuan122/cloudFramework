@@ -12,11 +12,11 @@ public class UserInfoSearchModel extends SearchModel {
 	/**
 	 * ID
 	 */
-	private String sId;
+	private String sUserId;
 	/**
 	 * 名称
 	 */
-	private String sName;
+	private String sUserName;
 	/**
 	 * 年龄
 	 */
@@ -28,18 +28,17 @@ public class UserInfoSearchModel extends SearchModel {
 	/**
 	 * 生日
 	 */
-	
-	public String getsId() {
-		return sId;
+	public String getsUserId() {
+		return sUserId;
 	}
-	public void setsId(String sId) {
-		this.sId = sId;
+	public void setsUserId(String sUserId) {
+		this.sUserId = sUserId;
 	}
-	public String getsName() {
-		return sName;
+	public String getsUserName() {
+		return sUserName;
 	}
-	public void setsName(String sName) {
-		this.sName = sName;
+	public void setsUserName(String sUserName) {
+		this.sUserName = sUserName;
 	}
 	public int getsAge() {
 		return sAge;
@@ -53,6 +52,7 @@ public class UserInfoSearchModel extends SearchModel {
 	public void setsEmpTp(String sEmpTp) {
 		this.sEmpTp = sEmpTp;
 	}
+	
 	
 	
 

@@ -21,7 +21,7 @@ import com.cn.cloud.core.support.idgen.TableNameStrategy;
 public class TableIdGenService extends AbstractDataBlockIdGenService {
 	private static final Logger logger = LoggerFactory.getLogger(TableIdGenService.class);
 	
-	  private String table = "WJF_003";
+	  private String table = "TABLE_SEQ";
 	
 	  private String tableName = "id";
 	

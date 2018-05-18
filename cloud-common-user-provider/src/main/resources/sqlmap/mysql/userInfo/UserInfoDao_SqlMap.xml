@@ -6,8 +6,60 @@
     
     <!-- user按条件查询. -->
     <select id="selectUserInfoModel" parameterType="UserInfoSearchModel" resultType="UserInfoModel">
-          SELECT *
+          SELECT seq
+				,user_id
+				,user_name
+				,password
+				,age
+				,note
+				,empTp
+				,school
+				,phone
+				,home_area
+				,now_area
+				,hobby
+				,marry_yn
+				,birthday
+				,weixin_id
+				,qq_id
+				,head_img
+				,sex
+				,email
+				,'15' distance
+				,'20' lastTime
+				,update_date
+				,reg_date
         FROM user T1
+    </select>
+    
+    
+    <!-- user按条件查询. -->
+    <select id="findByPk" parameterType="UserInfoModel" resultType="UserInfoModel">
+          SELECT seq
+				,user_id
+				,user_name
+				,password
+				,age
+				,note
+				,empTp
+				,school
+				,phone
+				,home_area
+				,now_area
+				,hobby
+				,marry_yn
+				,birthday
+				,weixin_id
+				,qq_id
+				,head_img
+				,sex
+				,email
+				,distance
+				,lastTime
+				,update_date
+				,reg_date
+        FROM user T1
+        where user_id = #{userId}
     </select>
     
     
@@ -16,21 +68,120 @@
     	/* [com.cn.cloud.user.provider.dao.UserInfoDao.create] */
     	INSERT INTO user 
 			(
-				name
-		        ,id
-		        ,age
-		        ,note
-		        ,empTp
+				seq
+				,user_id
+				,user_name
+				,password
+				,age
+				,note
+				,empTp
+				,school
+				,phone
+				,home_area
+				,now_area
+				,hobby
+				,marry_yn
+				,birthday
+				,weixin_id
+				,qq_id
+				,head_img
+				,sex
+				,email
+				,reg_date
+				,update_date
+
 		       )
 		       VALUES
 			   (
-			   	 #{name}
-			   	,#{id}
+			   	 #{seq}
+			   	,#{userId}
+			   	,#{userName}
+			   	,#{password}
 			   	,#{age}
 			   	,#{note}
 			   	,#{empTp}
+			   	,#{school}
+			   	,#{phone}
+			   	,#{homeArea}
+			   	,#{nowArea}
+			   	,#{hobby}
+			   	,#{marryYn}
+			   	,#{birthday}
+			   	,#{weixinId}
+			   	,#{qqId}
+			   	,#{headImg}
+			   	,#{sex}
+			   	,#{email}
+			   	,#{regDate}
+			   	,#{updateDate}
 
 			   )
+    </insert>
+    
+    
+    <!-- user插入-->
+    <insert id="update" parameterType="UserInfoModel" >
+    	/* [com.cn.cloud.user.provider.dao.UserInfoDao.create] */
+    	update user 
+		set 	update_date = #{updateDate}
+				<if test="userName !=null and userName !=''">  
+				,user_name = #{userName}
+				</if>
+				<if test="password !=null and password !=''">  
+				,password = #{password}
+				</if>
+				<if test="age !=null and age !=''">  
+				,age	  = #{age}
+				</if>
+				<if test="note !=null and note !=''">  
+				,note     = #{note}
+				</if>
+				<if test="empTp !=null and empTp !=''">  
+				,empTp    = #{empTp}
+				</if>
+				<if test="school !=null and school !=''">  
+				,school   = #{school}
+				</if>
+				<if test="phone !=null and phone !=''">  
+				,phone    = #{phone}
+				</if>
+				<if test="homeArea !=null and homeArea !=''">  
+				,home_area= #{homeArea}
+				</if>
+				<if test="nowArea !=null and nowArea !=''">  
+				,now_area = #{nowArea}
+				</if>
+				<if test="hobby !=null and hobby !=''">  
+				,hobby    = #{hobby}
+				</if>
+				<if test="marryYn !=null and marryYn !=''">  
+				,marry_yn = #{marryYn}
+				</if>
+				<if test="birthday !=null and birthday !=''">  
+				,birthday = #{birthday}
+				</if>
+				<if test="weixinId !=null and weixinId !=''">  
+				,weixin_id= #{weixinId}
+				</if>
+				<if test="qqId !=null and qqId !=''">  
+				,qq_id    = #{qqId}
+				</if>
+				<if test="headImg !=null and headImg !=''">  
+				,head_img = #{headImg}
+				</if>
+				<if test="sex !=null and sex !=''">  
+				,sex      = #{sex}
+				</if>
+				<if test="email !=null and email !=''">  
+				,email    = #{email}
+				</if>
+				<if test="email !=null and email !=''">  
+				,lastTime = #{lastTime}
+				</if>
+				<if test="email !=null and email !=''">  
+				,distance = #{distance}
+				</if>
+			 where user_id = #{userId}
     </insert>
 
 </mapper>
